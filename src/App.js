@@ -2,7 +2,7 @@ import "./App.css";
 import Contacts from "./components/contacts/Contacts";
 import FormComponent from "./components/form/FormComponent";
 import { useState } from "react";
-import { AddUser } from "./utils/function";
+import { AddUser, UpdateUser } from "./utils/function";
 
 function App() {
   const [info, setInfo] = useState({
@@ -13,7 +13,16 @@ function App() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    AddUser(info);
+
+    if (info.id) {
+      UpdateUser(info);
+    } else {
+      AddUser(info);
+    }
+  };
+
+  const editUser = (id, username, phoneNumber, gender) => {
+    setInfo({ id, username, phoneNumber, gender });
   };
 
   return (
@@ -23,7 +32,7 @@ function App() {
         setInfo={setInfo}
         handleSubmit={handleSubmit}
       />
-      <Contacts />
+      <Contacts editUser={editUser} />
     </div>
   );
 }

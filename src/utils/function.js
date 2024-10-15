@@ -1,6 +1,5 @@
 //ADD USER
 
-//write info databasee yazmak
 import {
   getDatabase,
   onValue,
@@ -13,7 +12,8 @@ import {
 import firebase from "./firebase";
 import { useEffect, useState } from "react";
 
-//!DB'YE EKLEME
+//!DB'YE EKLEME //write info databasee yazmak
+
 export const AddUser = (info) => {
   const db = getDatabase(firebase);
   const userRef = ref(db, "users/"); //"users/" referansı oluşturuluyor
@@ -49,6 +49,8 @@ export const useFetch = () => {
       for (let id in data) {
         userArray.push({ id, ...data[id] });
       }
+      //       onValue(userRef, ...) fonksiyonu, belirtilen referansta (user/) değişiklik olduğunda çalışır. snapshot.val() ile bu referanstan dönen veriler alınıyor.
+      // Alınan veriler userArray içerisine id'leriyle birlikte eklenir ve en sonunda setContactList ile state'e kaydedilir. Yüklenme tamamlandıktan sonra ise isLoading false yapılır.
       setContactList(userArray);
       setIsLoading(false);
     });
@@ -59,19 +61,19 @@ export const useFetch = () => {
 
 export const DeleteUser = (id) => {
   const db = getDatabase(firebase);
-  const userRef = ref(db, "users/");
+  // const userRef = ref(db, "users/");
   remove(ref(db, "users/" + id));
   //   Toastify("Deleted Successfully");
 };
 
 //! DBDEN CONTACTS'DAN GÜNCELLEME
-// export const UpdateUser = (info) => {
-//   const db = getDatabase(firebase);
-//   const userRef = ref(db, "users/");
+export const UpdateUser = (info) => {
+  const db = getDatabase(firebase);
+  const userRef = ref(db, "users/");
 
-//   const updates = {};
+  const updates = {};
 
-//   updates["users/" + info.id] = info;
+  updates["users/" + info.id] = info;
 
-//   return update(ref(db), updates);
-// };
+  return update(ref(db), updates);
+};
