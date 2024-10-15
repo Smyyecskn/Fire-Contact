@@ -47,20 +47,20 @@ export const useFetch = () => {
   return { isLoading, contactList };
 };
 
-export const DeleteUser = (id) => {
-  const db = getDatabase(firebase);
-  const userRef = ref(db, "user/");
-  remove(ref(db, "user/" + id));
-  //   Toastify("Deleted Successfully");
-};
+// export const DeleteUser = (id) => {
+//   const db = getDatabase(firebase);
+//   const userRef = ref(db, "user/");
+//   remove(ref(db, "user/" + id));
+//   //   Toastify("Deleted Successfully");
+// };
 
-export const UpdateUser = (info) => {
-  const db = getDatabase(firebase);
-  const userRef = ref(db, "user/");
+// export const UpdateUser = (info) => {
+//   const db = getDatabase(firebase);
+//   const userRef = ref(db, "user/");
 
-  const updates = {};
+//   const updates = {};
 
-  updates["user/" + info.id] = info;
+//   updates["user/" + info.id] = info;
 
-  return update(ref(db), updates);
-};
+//   return update(ref(db), updates);
+// };
