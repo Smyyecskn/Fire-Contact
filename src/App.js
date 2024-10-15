@@ -20,6 +20,7 @@ function App() {
     } else {
       AddUser(info);
     }
+    setInfo({ username: "", phoneNumber: "", gender: "" });
   };
 
   const editUser = (id, username, phoneNumber, gender) => {

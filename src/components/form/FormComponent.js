@@ -51,6 +51,7 @@ const FormComponent = ({ info, setInfo, handleSubmit }) => {
               value={info.username}
               onChange={handleChange}
               placeholder="Name"
+              required
               InputProps={{
                 startAdornment: (
                   <InputAdornment position="start">
@@ -65,6 +66,7 @@ const FormComponent = ({ info, setInfo, handleSubmit }) => {
               value={info.phoneNumber}
               onChange={handleChange}
               placeholder="Phone Number"
+              required
               InputProps={{
                 startAdornment: (
                   <InputAdornment position="start">
@@ -81,14 +83,17 @@ const FormComponent = ({ info, setInfo, handleSubmit }) => {
                 variant="outlined"
                 value={info.gender}
                 onChange={handleChange}
+                required
               >
-                <MenuItem value="Female">Female</MenuItem>
+                <MenuItem default value="Female">
+                  Female
+                </MenuItem>
                 <MenuItem value="Male">Male</MenuItem>
                 <MenuItem value="Other">Other</MenuItem>
               </Select>
             </FormControl>
             <Button variant="contained" type="submit" value="Submit">
-              ADD
+              {info.id ? "UPDATE" : "ADD"}
             </Button>
           </Stack>
         </form>
