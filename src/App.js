@@ -3,6 +3,7 @@ import Contacts from "./components/contacts/Contacts";
 import FormComponent from "./components/form/FormComponent";
 import { useState } from "react";
 import { AddUser, UpdateUser } from "./utils/function";
+import { ToastContainer } from "react-toastify";
 
 function App() {
   const [info, setInfo] = useState({
@@ -33,6 +34,7 @@ function App() {
         handleSubmit={handleSubmit}
       />
       <Contacts editUser={editUser} />
+      <ToastContainer />
     </div>
   );
 }

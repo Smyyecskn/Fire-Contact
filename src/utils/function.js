@@ -11,6 +11,7 @@ import {
 } from "firebase/database";
 import firebase from "./firebase";
 import { useEffect, useState } from "react";
+import toastify, { toastSuccessNotify } from "../helper/toastify";
 
 //!DB'YE EKLEME //write info databasee yazmak
 
@@ -63,7 +64,7 @@ export const DeleteUser = (id) => {
   const db = getDatabase(firebase);
   // const userRef = ref(db, "users/");
   remove(ref(db, "users/" + id));
-  //   Toastify("Deleted Successfully");
+  toastify("Deleted Successfully");
 };
 
 //! DBDEN CONTACTS'DAN GÜNCELLEME
